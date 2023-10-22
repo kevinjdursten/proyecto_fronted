@@ -10,7 +10,7 @@ function Navbar() {
     return (
         <>
             <nav>
-                <ul className="flex justify-center items-center gap-10 w-full h-[45px] bg-[red]">
+                <ul className="flex justify-center items-center gap-10 w-full h-[45px] bg-[fuchsia]">
                     <li>
                         <Link to={links.Home}>Home</Link>
                     </li>

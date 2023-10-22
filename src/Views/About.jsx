@@ -1,3 +1,5 @@
+import Img from "../Resources/Img/Edicion Photoshop.jpg";
+
 
 function About() {
     return (

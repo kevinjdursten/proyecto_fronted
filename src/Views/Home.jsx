@@ -7,6 +7,9 @@ const Home = () => {
                 <img src={Img} alt="" />
             </section>
         </>
+
+
+
     );
 }
 
