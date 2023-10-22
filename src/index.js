@@ -8,8 +8,10 @@ import About from "./Views/About";
 import Login from "./Views/Login";
 import Register from "./Views/Register";
 import Layout from "./Components/Layout";
+import Index from "./Views/Index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const token = localStorage.getItem("token");
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -46,6 +48,11 @@ root.render(
             </Layout>
           }
         />
+        {token && (
+          <>
+            <Route path="/home" element={<Index />} />
+          </>
+        )}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

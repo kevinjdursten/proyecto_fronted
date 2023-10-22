@@ -1,4 +1,4 @@
-import Img from "../Resources/Img/Edicion Photoshop.jpg";
+// import Img from "../Resources/Img/Edicion Photoshop.jpg";
 
 
 function About() {

@@ -1,33 +1,84 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
-    return (
-        <div className='login template d-flex justify center align-items-center 100-w vh-100 bg-primary'>
-        <div className="50-w p-5 rounded bg-white"></div>
-         <h3 className="text-center">registrate</h3>
-         <div className='mb-2'> 
-         <label htmlFor="email">email</label>
-         <input type="email" placeholder="enter email" className="form-control"></input>
-        </div>
-        <div>
-          <input type="checkbox" classname='custom-control custom-checkbox' id="check"></input>
-          <label htmlFor="check" className="custom-input-label ms-2">
-            Remember me
-          </label>
-        </div>
-        <div className="d-grid">
-          <button className="btn btn-primary">Login</button>
-          </div>
-          <p className="text-right">
-            Don't have an account?
-            forgot <a href="">password</a><a href="">sign up</a>
-          </p>
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-        <>
-            <h1>
-                Login
-            </h1>
-        </>
-    )
+  const enviarFormulario = (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      console.log("Porfavor ingresar usuario y contraseña")
+      return;
+    }
+    axios
+      .post("http://localhost:3002/user/login", { email, password })
+      .then((res) => {
+        if (res.data.token) {
+          if (res.data.info.role === "user") {
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("info", res.data.info)
+            navigate("/home");
+          } else if (res.data.info.role === "admin") {
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("info", res.data.info)
+            navigate("/admin");
+          } else {
+            console.log(res.data.message);
+          }
+        }
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log("Error de respuesta:", err.response.data);
+        } else if (err.request) {
+          console.log("Error de solicitud:", err.request);
+        } else {
+          console.log("Error:", err.message);
+        }
+      });
+  };
+
+  return (
+    <>
+      <div className='login template d-flex justify center align-items-center 100-w vh-100 bg-primary'>
+        <div className="50-w p-5 rounded bg-white"></div>
+        <h3 className="text-center">registrate</h3>
+        <form action="" onSubmit={enviarFormulario}>
+          <div className='mb-2'>
+            <label htmlFor="email">Email</label>
+            <input type="email"
+              placeholder="EMAIL"
+              name="email"
+              className="form-control"
+              value={email}
+              onChange={({ target }) => setEmail(target.value)} />
+          </div>
+          <div className='mb-2'>
+            <label htmlFor="password">Password</label>
+            <input type="password"
+              placeholder="PASSWORD"
+              name="password"
+              className="form-control"
+              value={password}
+              onChange={({ target }) => setPassword(target.value)} />
+          </div>
+          <div>
+            <input type="submit"
+              className=""
+              value="Acceder"
+            />
+          </div>
+        </form>
+        <p className="text-right">
+          Don't have an account?
+          forgot password sign up
+        </p>
+      </div>
+    </>
+  )
 }
 
 
