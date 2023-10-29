@@ -7,7 +7,6 @@ import Home from "./Views/Home";
 import About from "./Views/About";
 import Login from "./Views/Login";
 import Register from "./Views/Register";
-import Layout from "./Components/Layout";
 import Index from "./Views/Index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -19,33 +18,25 @@ root.render(
         <Route
           path="/"
           element={
-            <Layout>
-              <Home />
-            </Layout>
+            <Home />
           }
         />
         <Route
           path="/about"
           element={
-            <Layout>
-              <About />
-            </Layout>
+            <About />
           }
         />
         <Route
           path="/login"
           element={
-            <Layout>
-              <Login />
-            </Layout>
+            <Login />
           }
         />
         <Route
           path="/register"
           element={
-            <Layout>
-              <Register />
-            </Layout>
+            <Register />
           }
         />
         {token && (
