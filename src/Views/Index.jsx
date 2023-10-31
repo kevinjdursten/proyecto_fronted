@@ -1,11 +1,14 @@
-function Home() {
+import Img from "../Resources/Img/Edicion Photoshop.jpg";
+
+
+const Index = () => {
     return (
         <>
-            <h1>
-                HOME
-            </h1>
+            <section className="flex w-full h-full">
+                <img src={Img} alt="" />
+            </section>
         </>
-    )
+    );
 }
 
-export default Home;
+export default Index;

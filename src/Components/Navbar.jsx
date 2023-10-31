@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 function Navbar() {
     const links = {
-        Home: "/",
+        Index: "/",
         About: "/about",
         Login: "/login",
         Register: "/register"
@@ -12,7 +12,7 @@ function Navbar() {
             <nav>
                 <ul className="flex justify-center items-center gap-10 w-full h-[45px] bg-[fuchsia]">
                     <li>
-                        <Link to={links.Home}>Home</Link>
+                        <Link to={links.Index}>Index</Link>
                     </li>
                     <li>
                         <Link to={links.About}>About</Link>

@@ -17,17 +17,11 @@ function Login() {
       .post("http://localhost:3002/user/login", { email, password })
       .then((res) => {
         if (res.data.token) {
-          if (res.data.info.role === "user") {
-            localStorage.setItem("token", res.data.token);
-            localStorage.setItem("info", res.data.info)
-            navigate("/home");
-          } else if (res.data.info.role === "admin") {
-            localStorage.setItem("token", res.data.token);
-            localStorage.setItem("info", res.data.info)
-            navigate("/admin");
-          } else {
-            console.log(res.data.message);
-          }
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("info", res.data.info)
+          navigate("/home")
+        } else {
+          console.log(res.data.message);
         }
       })
       .catch((err) => {
