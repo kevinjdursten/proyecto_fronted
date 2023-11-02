@@ -1,12 +1,12 @@
-import Img from "../Resources/Img/Edicion Photoshop.jpg";
-import Img1 from "../Resources/Img/dinosaurio.jpg";
-import Img2 from "../Resources/Img/blancanieves.jpg";
-import Img3 from "../Resources/Img/buchanan.jpg";
-import Img4 from "../Resources/Img/durmiente.jpg";
-import Img5 from "../Resources/Img/arreglo stitch.jpg";
-import Img6 from "../Resources/Img/rosa.jpg";
+import Img from "../../Resources/Img/Edicion Photoshop.jpg";
+import Img1 from "../../Resources/Img/dinosaurio.jpg";
+import Img2 from "../../Resources/Img/blancanieves.jpg";
+import Img3 from "../../Resources/Img/buchanan.jpg";
+import Img4 from "../../Resources/Img/durmiente.jpg";
+import Img5 from "../../Resources/Img/arreglo stitch.jpg";
+import Img6 from "../../Resources/Img/rosa.jpg";
 
-const Home = () => {
+export const Home = () => {
     return (
         <>
             <section className="flex w-full h-full">
@@ -106,5 +106,3 @@ const Home = () => {
         </>
     );
 }
-
-export default Home;

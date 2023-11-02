@@ -1,7 +1,7 @@
 // import Img from "../Resources/Img/Edicion Photoshop.jpg";
 
 
-function About() {
+export function About() {
     return (
         <>
             <h1>
@@ -10,5 +10,3 @@ function About() {
         </>
     )
 }
-
-export default About;

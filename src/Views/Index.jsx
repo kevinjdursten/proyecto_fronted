@@ -1,7 +1,7 @@
 import Img from "../Resources/Img/Edicion Photoshop.jpg";
 
 
-const Index = () => {
+export const Index = () => {
     return (
         <>
             <section className="flex w-full h-full">
@@ -10,5 +10,3 @@ const Index = () => {
         </>
     );
 }
-
-export default Index;

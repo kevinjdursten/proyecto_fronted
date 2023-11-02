@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Login() {
+export function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ function Login() {
       .then((res) => {
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);
-          localStorage.setItem("info", res.data.info)
+          localStorage.setItem("role", res.data.role)
           navigate("/home")
         } else {
           console.log(res.data.message);
@@ -74,7 +74,3 @@ function Login() {
     </>
   )
 }
-
-
-
-export default Login;
