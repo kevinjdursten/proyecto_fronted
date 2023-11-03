@@ -16,6 +16,7 @@ import { AdministracionUser } from "./Views/User/AdministracionUser";
 import { Admin } from "./Views/Admin/Admin";
 import { Pagos } from "./Views/Admin/Pagos";
 import { Productos } from "./Views/Admin/Productos";
+import { Pago } from "./Views/User/crear/Pago";
 
 // Vistas del CRUD
 import { CrearProducto } from "./Views/Admin/crear/CrearProducto";
@@ -66,6 +67,14 @@ function App() {
               element={
                 <Layout>
                   <Home />
+                </Layout>
+              }
+            />
+            <Route
+              path="/pago/:productId"
+              element={
+                <Layout>
+                  <Pago />
                 </Layout>
               }
             />

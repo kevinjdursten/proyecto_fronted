@@ -48,10 +48,10 @@ export function Register() {
 
     return (
         <section>
-            <h1 className="text-center text-2xl py-2 text-[white]">
-                Registrate
-            </h1>
-            <form className="flex flex-col justify-center items-center h-[500px]" onSubmit={handleRegister}>
+            <form className="flex flex-col justify-center items-center h-[525px]" onSubmit={handleRegister}>
+                <h1 className="text-center text-2xl py-2 text-[white]">
+                    Registrate
+                </h1>
                 <div className="pb-4">
                     <label htmlFor="name" className="text-[white] mr-[20px]">Nombre</label>
                     <input

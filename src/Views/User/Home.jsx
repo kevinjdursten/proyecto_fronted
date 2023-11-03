@@ -1,108 +1,60 @@
-import Img from "../../Resources/Img/Edicion-Photoshop.jpg";
-import Img1 from "../../Resources/Img/dinosaurio.jpg";
-import Img2 from "../../Resources/Img/blancanieves.jpg";
-import Img3 from "../../Resources/Img/buchanan.jpg";
-import Img4 from "../../Resources/Img/durmiente.jpg";
-import Img5 from "../../Resources/Img/arreglo stitch.jpg";
-import Img6 from "../../Resources/Img/rosa.jpg";
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 export const Home = () => {
+    const [Producto, setProducto] = useState(null);
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:3002/product")
+            .then((res) => {
+                setProducto(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [Producto]);
+
+
+    if (!Producto) {
+        return <h1>Cargando...</h1>
+    }
     return (
-        <>
-            <section className="flex w-full h-full">
-                <img src={Img} alt="" />
-            </section>
-            <div className="gris grid-cols-4" >
-                <div className="col-span-1">
-                    <div className="item">
-                        <span className="titulo-item">arreglo de dinosaurio</span>
-                        <img src={Img1} alt="/kramelo shop arreglos/dinosaurio.jpg" className="img-item" />
-                        <span className="precio-item">$25</span>
-                        <button className="boton-item">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div className="col-span-2">
-                    <div className="item">
-                        <span className="titulo-item">cilindro con perfume y pack de cartas tematico Blancanieves</span>
-                        <img src={Img2} alt="/kramelo shop arreglos/blancanieves.jpg" className="img-item" />
-                        <span className="precio-item">$30</span>
-                        <button className="boton-item">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div className="col-span-3">
-                    <div className="item">
-                        <span className="titulo-item">caja de madera Buchanan Deluxe 12 Años</span>
-                        <img src={Img3} alt="/kramelo shop arreglos/buchanan.jpg" className="img-item" />
-                        <span className="precio-item">$25</span>
-                        <button className="boton-item">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div className="col-span-4">
-                    <div className="item">
-                        <span className="titulo-item">cilindro con perfume y pack de cartas tematico La Bella Durmiente</span>
-                        <img src={Img4} alt="/kramelo shop arreglos/durmiente.jpg" className="img-item" />
-                        <span className="precio-item">$30</span>
-                        <button className="boton-item">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div className="col-span-5">
-                    <div className="item">
-                        <span className="titulo-item">arreglo y bolso Stitch</span>
-                        <img src={Img5} alt="/kramelo shop arreglos/arreglo stitch.jpg" className="img-item" />
-                        <span className="precio-item">$25</span>
-                        <button className="boton-item">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div className="col-span-6">
-                    <div className="item">
-                        <span className="titulo-item">caja con rosa artificial y globos</span>
-                        <img src={Img6} alt="/kramelo shop arreglos/rosa.jpg" className="img-item" />
-                        <span className="precio-item">$30</span>
-                        <button className="boton-item">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div>
-                    <div className="carrito-item">
-                        <img src="" width="80px" alt=" " />
-                        <div className="carrito-item-detalles">
-                            <span className="carrito-item-titulo"></span>
-                            <div className="selector-cantidad">
-                                <i className="fa-solid fa-minus restar-cantidad"></i>
-                                <i className="fa-solid fa-plus sumar-cantidad"></i>
-                                <input type="text" value="1" className="carrito-item-cantidad" disabled />
+        <section className="h-full">
+            <h1 className="py-10 text-[white] text-center text-4xl font-black">
+                Productos
+            </h1>
+            <div className="flex flex-wrap py-4">
+                {Producto.map((item) => {
+                    return (
+                        <div className="flex flex-wrap py-10">
+                            <div key={item.id} className="flex flex-col flex-wrap w-[350px] px-10 items-center justify-evenly text-[white]">
+                                <h1 className="">
+                                    Nombre: {item.name}
+                                </h1>
+                                <p className="text-justify">
+                                    Descripcion: {item.description}
+                                </p>
+                                <p>
+                                    Precio: {item.price}$
+                                </p>
+                                <p>
+                                    Categoria: {item.category}
+                                </p>
+                                <Link
+                                    className="bg-[white] text-[black] px-4 py-2 rounded-full hover:bg-[black] hover:text-[white] hover:scale-105 duration-300"
+                                    to={`/pago/${item._id}`}>
+                                    Comprar
+                                </Link>
                             </div>
-                            <span className="carrito-item-precio">$0</span>
-                        </div>
-                        <span className="btn-eliminar">
-                            <i className="fa-solid fa-trash"></i>
-                        </span>
-                    </div>
-                    <div className="carrito-item">
-                        <img src="" width="80px" alt="" />
-                        <div className="carrito-item-detalles">
-                            <span className="carrito-item-titulo"></span>
-                            <div className="selector-cantidad">
-                                <i className="fa-solid fa-minus restar-cantidad"></i>
-                                <i className="fa-solid fa-plus sumar-cantidad"></i>
-                                <input type="text" value="3" className="carrito-item-cantidad" disabled />
+                            <div className="">
+                                <img className="rounded-full w-[240px] h-[300px]" src={`http://localhost:3002/image/productos/${item.image}`} alt="kramelo shop" />
                             </div>
-                            <span className="carrito-item-precio">$0</span>
                         </div>
-                        <button className="btn-eliminar">
-                            <i className="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-                <div className="carrito-total">
-                    <div className="fila">
-                        <strong>Tu Total</strong>
-                        <span className="carrito-precio-total">
-                            $0
-                        </span>
-                    </div>
-                    <button className="btn-pagar">Pagar<i className="fa-solid fa-bag-shopping"></i> </button>
-                </div>
+                    )
+                })}
             </div>
-        </>
-    );
+        </section>
+    )
 }

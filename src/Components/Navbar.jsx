@@ -42,8 +42,8 @@ function Navbar() {
         )
     }
     return (
-        <nav>
-            <ul>
+        <nav className="w-full h-[50px] bg-[fuchsia]">
+            <ul className="flex justify-around items-center h-full text-[white] font-black">
                 {role === "user" && linksUser.map(link => (
                     <li key={link.id}>
                         <Link to={link.to}>{link.label}</Link>
@@ -54,8 +54,8 @@ function Navbar() {
                         <Link to={link.to}>{link.label}</Link>
                     </li>
                 ))}
+                <button onClick={handleLogout}>Logout</button>
             </ul>
-            <button onClick={handleLogout}>Logout</button>
         </nav>
     );
 }

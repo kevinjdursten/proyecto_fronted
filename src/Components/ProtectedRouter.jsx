@@ -8,6 +8,7 @@ export const ProtectedRouter = ({ children }) => {
     const roles = {
         user: [
             /^\/home$/,
+            /^\/pago\/[\w-]+$/,
             /^\/administracion$/
         ],
         admin: [
