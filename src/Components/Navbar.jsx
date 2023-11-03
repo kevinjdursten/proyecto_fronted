@@ -14,12 +14,14 @@ function Navbar() {
     // ]
 
     const linksUser = [
-        { id: 0, to: "/home", label: "Home" }
+        { id: 0, to: "/home", label: "Home" },
+        { id: 1, to: "/administracion", label: "Administracion" }
     ]
 
     const linksAdmin = [
         { id: 0, to: "/producto", label: "Productos" },
-        { id: 1, to: "/pago", label: "Pagos" }
+        { id: 1, to: "/pago", label: "Pagos" },
+        { id: 2, to: "/admin", label: "Administracion" }
     ]
 
     const handleLogout = async () => {
