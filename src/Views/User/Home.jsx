@@ -1,4 +1,4 @@
-import Img from "../../Resources/Img/Edicion Photoshop.jpg";
+import Img from "../../Resources/Img/Edicion-Photoshop.jpg";
 import Img1 from "../../Resources/Img/dinosaurio.jpg";
 import Img2 from "../../Resources/Img/blancanieves.jpg";
 import Img3 from "../../Resources/Img/buchanan.jpg";

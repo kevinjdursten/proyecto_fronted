@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../Resources/Css/fondo.css";
 
 export function Register() {
     const [name, setName] = useState("");
@@ -46,58 +47,73 @@ export function Register() {
     }
 
     return (
-        <>
-            <h1>
-                Register
+        <section>
+            <h1 className="text-center text-2xl py-2 text-[white]">
+                Registrate
             </h1>
-            <form onSubmit={handleRegister}>
-                <label htmlFor="name">Nombre</label>
-                <input
-                    type="text"
-                    placeholder="Nombre"
-                    name="name"
-                    spellCheck="false"
-                    required pattern="^[a-zA-Z ]+$"
-                    onInvalid={(e) => { message(e, "name") }}
-                    onChange={(e) => setName(e.target.value)}
-                />
-                <label htmlFor="lastName">Apellido</label>
-                <input
-                    type="text"
-                    placeholder="Apellido"
-                    name="lastName"
-                    spellCheck="false"
-                    required pattern="^[a-zA-Z ]+$"
-                    onInvalid={(e) => { message(e, "lastname") }}
-                    onChange={(e) => setLastName(e.target.value)} />
-                <label htmlFor="email">Correo electronico</label>
-                <input
-                    type="email"
-                    placeholder="Correo Electronico"
-                    name="email"
-                    spellCheck="false"
-                    required
-                    onInvalid={(e) => { message(e, "email") }}
-                    onChange={(e) => setEmail(e.target.value)} />
-                <label htmlFor="birthDate">Fecha Nacimiento</label>
-                <input
-                    type="date"
-                    name="birthDate"
-                    min="1900-01-01" max="2030-12-31"
-                    value={birthDate}
-                    onChange={(e) => setBirthDate(e.target.valueAsNumber)} />
-                <label htmlFor="password">Contraseña</label>
-                <input
-                    type="password"
-                    placeholder="Contraseña"
-                    name="password"
-                    minLength="8"
-                    maxLength="20"
-                    required
-                    onInvalid={(e) => { message(e, "password") }}
-                    onChange={(e) => setPassword(e.target.value)} />
-                <button type="submit">Registrarme</button>
+            <form className="flex flex-col justify-center items-center h-[500px]" onSubmit={handleRegister}>
+                <div className="pb-4">
+                    <label htmlFor="name" className="text-[white] mr-[20px]">Nombre</label>
+                    <input
+                        type="text"
+                        placeholder="Nombre"
+                        className="text-[black] rounded"
+                        name="name"
+                        spellCheck="false"
+                        required pattern="^[a-zA-Z ]+$"
+                        onInvalid={(e) => { message(e, "name") }}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </div>
+                <div className="pb-4">
+                    <label className="text-[white] mr-[20px]" htmlFor="lastName">Apellido</label>
+                    <input
+                        type="text"
+                        placeholder="Apellido"
+                        className="text-[black] rounded"
+                        name="lastName"
+                        spellCheck="false"
+                        required pattern="^[a-zA-Z ]+$"
+                        onInvalid={(e) => { message(e, "lastname") }}
+                        onChange={(e) => setLastName(e.target.value)} />
+                </div>
+                <div className="pb-4">
+                    <label className="text-[white] mr-[26px]" htmlFor="email">Correo</label>
+                    <input
+                        type="email"
+                        placeholder="Correo Electronico"
+                        className="text-[black] rounded"
+                        name="email"
+                        spellCheck="false"
+                        required
+                        onInvalid={(e) => { message(e, "email") }}
+                        onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                <div className="pb-4">
+                    <label className="text-[white] mr-[20px]" htmlFor="birthDate">Fecha Nacimiento</label>
+                    <input
+                        type="date"
+                        name="birthDate"
+                        min="1900-01-01" max="2030-12-31"
+                        className="text-[black] rounded"
+                        value={birthDate}
+                        onChange={(e) => setBirthDate(e.target.valueAsNumber)} />
+                </div>
+                <div className="pb-4">
+                    <label className="text-[white] mr-[10px]" htmlFor="password">Contraseña</label>
+                    <input
+                        type="password"
+                        placeholder="Contraseña"
+                        className="text-[black] rounded"
+                        name="password"
+                        minLength="8"
+                        maxLength="20"
+                        required
+                        onInvalid={(e) => { message(e, "password") }}
+                        onChange={(e) => setPassword(e.target.value)} />
+                </div>
+                <button className="cursor-pointer text-[white] font-black" type="submit">Registrarme</button>
             </form>
-        </>
+        </section>
     )
 }

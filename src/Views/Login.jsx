@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import "../Resources/Css/fondo.css"
 
 export function Login() {
   const navigate = useNavigate();
@@ -36,41 +37,40 @@ export function Login() {
   };
 
   return (
-    <>
-      <div className='login template d-flex justify center align-items-center 100-w vh-100 bg-primary'>
-        <div className="50-w p-5 rounded bg-white"></div>
-        <h3 className="text-center">registrate</h3>
+    <section className="w-full h-full">
+      <div className='flex flex-col justify-center items-center text-[white] w-full h-[525px]'>
+        <h3 className="text-center text-xl">Inicia Session</h3>
         <form action="" onSubmit={enviarFormulario}>
-          <div className='mb-2'>
-            <label htmlFor="email">Email</label>
+          <div className='py-2'>
+            <label htmlFor="email" className="pr-[40px]">Email</label>
             <input type="email"
               placeholder="EMAIL"
               name="email"
-              className="form-control"
+              className="text-[black] rounded"
               value={email}
               onChange={({ target }) => setEmail(target.value)} />
           </div>
-          <div className='mb-2'>
-            <label htmlFor="password">Password</label>
+          <div className='py-2'>
+            <label htmlFor="password" className="pr-[12px]">Password</label>
             <input type="password"
               placeholder="PASSWORD"
               name="password"
-              className="form-control"
+              className="text-[black] rounded"
               value={password}
               onChange={({ target }) => setPassword(target.value)} />
           </div>
-          <div>
+          <div className="flex justify-center items-center">
             <input type="submit"
-              className=""
+              className="cursor-pointer font-black"
               value="Acceder"
             />
           </div>
         </form>
-        <p className="text-right">
-          Don't have an account?
-          forgot password sign up
+        <p className="text-right py-4 text-lg">
+          No tienes cuenta?<br />
+          <Link className="font-black" to="/register">Registrate</Link>
         </p>
       </div>
-    </>
+    </section>
   )
 }

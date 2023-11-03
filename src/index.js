@@ -35,9 +35,30 @@ function App() {
               </Layout>
             }
           />
-          <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/about"
+            element={
+              <Layout>
+                <About />
+              </Layout>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <Layout>
+                <Login />
+              </Layout>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <Layout>
+                <Register />
+              </Layout>
+            }
+          />
 
           <Route element={<ProtectedRoutes />}>
             <Route
