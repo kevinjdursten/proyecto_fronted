@@ -78,8 +78,8 @@ export const CrearProducto = () => {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="w-full h-full">
+            <form className="flex flex-col items-center justify-center h-full py-20 " onSubmit={handleSubmit}>
                 <label>
                     Nombre:
                 </label>
